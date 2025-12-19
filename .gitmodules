@@ -1,0 +1,27 @@
+[submodule "docs/terraform"]
+	path = docs/terraform
+	url = https://github.com/hashicorp/terraform.git
+[submodule "docs/terraform-provider-vault"]
+	path = docs/terraform-provider-vault
+	url = https://github.com/hashicorp/terraform-provider-vault
+[submodule "docs/terraform-cidr-subnets"]
+	path = docs/terraform-cidr-subnets
+	url = https://github.com/hashicorp/terraform-cidr-subnets
+[submodule "docs/terraform-web-unified-docs"]
+	path = docs/terraform-web-unified-docs
+	url = https://github.com/hashicorp/web-unified-docs
+[submodule "docs/terraform-provider-local"]
+	path = docs/terraform-provider-local
+	url = https://github.com/hashicorp/terraform-provider-local
+[submodule "docs/ansible-documentation"]
+	path = docs/ansible-documentation
+	url = https://github.com/ansible/ansible-documentation
+[submodule "docs/vault-examples"]
+	path = docs/vault-examples
+	url = https://github.com/hashicorp/vault-examples
+[submodule "docs/vault"]
+	path = docs/vault
+	url = https://github.com/hashicorp/vault
+[submodule "docs/terraform-provider-twingate"]
+	path = docs/terraform-provider-twingate
+	url = https://github.com/Twingate/terraform-provider-twingate
