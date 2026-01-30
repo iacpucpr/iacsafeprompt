@@ -1,0 +1,7 @@
+- name: Enforce TLS 1.3
+  copy:
+    dest: /etc/ssl/openssl.cnf
+    content: |
+      MinProtocol = TLSv1.3
+      CipherString = TLS_AES_256_GCM_SHA384
+

@@ -1,0 +1,12 @@
+- name: Harden Docker daemon
+  copy:
+    dest: /etc/docker/daemon.json
+    content: |
+      {
+        "userns-remap": "default",
+        "icc": false,
+        "no-new-privileges": true,
+        "live-restore": true
+      }
+  notify: restart docker
+

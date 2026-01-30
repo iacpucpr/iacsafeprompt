@@ -1,0 +1,10 @@
+- hosts: all
+  roles:
+    - role: host-hardening
+      become: true
+
+- hosts: glpi_host
+  roles:
+    - role: docker-hardening
+      become: true
+
