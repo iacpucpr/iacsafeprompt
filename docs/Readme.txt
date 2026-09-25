@@ -1,6 +1,6 @@
 Command to sync repositorios as submodule
 
-git submodule update --remote 
+git submodule update --remote --init
 
 Repositories: 
 https://github.com/hashicorp/terraform-provider-vault
