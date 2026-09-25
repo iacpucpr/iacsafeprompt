@@ -1,10 +1,10 @@
 
 # IaCSafePrompt - Em desenvolvimento
 
-> Avaliação e mitigação de vulnerabilidades em Infraestrutura como Código (IaC) gerada por Large Language Models, por meio de um ciclo iterativo de crítica e refinamento (RCI) aplicado em três fases sequenciais.
+> Avaliação de vulnerabilidades em Infraestrutura como Código (IaC) gerada por Large Language Models, por meio de um ciclo iterativo de crítica e refinamento (RCI) aplicado em três fases sequenciais.
 ![status](https://img.shields.io/badge/status-pesquisa%20em%20andamento-yellow)
 
-Repositório de apoio à tese de doutorado *"Avaliação da Resiliência de Segurança de Código IaC Gerado por LLMs sob os Princípios de Zero Trust"* (PUCPR — Curitiba).
+Repositório de apoio à tese de doutorado *"Uma Abordagem de Avaliação de Segurança de Código IaC Gerado por LLMs"* (PUCPR — Curitiba).
 
 ---
 
