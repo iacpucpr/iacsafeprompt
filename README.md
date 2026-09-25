@@ -30,12 +30,6 @@ O pipeline é organizado em três fases sequenciais, cada uma aplicando o ciclo 
                               Zero Trust)                      Mitigação de Riscos)
 ```
 
-**Fase 1 — Geração.** LLMs de propósito geral (Grupo A) geram o código IaC a partir de um *prompt* estruturado, aplicando o RCI de forma homogênea — o próprio modelo atua sequencialmente como Gerador, Crítico e Refinador sobre sua própria saída. O resultado passa pela Avaliação Funcional (Sim / Parcialmente / Não), com limite de 3 iterações; esgotado o limite sem sucesso, a amostra é documentada como falha de geração e não avança.
-
-**Fase 2 — Refinamento de Segurança.** O RCI é reaplicado sobre o conjunto dos cinco controles operacionais como um único artefato (não controle a controle), respeitando o mesmo limite de 3 iterações. Dois braços são comparados sobre o mesmo artefato gerado pelo Grupo A: o próprio Grupo A realizando autocrítica homogênea (grupo de controle) e o Grupo B, especializado em segurança defensiva, atuando exclusivamente como Crítico e Refinador. A saída passa pela Avaliação Humana de Segurança, que combina análise automatizada (Trivy, Checkov) com revisão manual sobre os cinco controles em conjunto — o que dispensa uma verificação de regressão dedicada, já que qualquer regressão introduzida por uma correção pontual é capturada na rodada seguinte. A complexidade da correção determina o encaminhamento: correções de baixa complexidade retornam diretamente à Avaliação Humana; correções de alta complexidade reencaminham o artefato ao ciclo RCI.
-
-**Fase 3 — Validação Ofensiva.** O Grupo C, especializado em segurança ofensiva, gera vetores de ataque por controle sob o mesmo método RCI (agora orientado à quebra de cada controle), mapeados ao MITRE ATT&CK. A execução adota o paradigma *human-in-the-loop*: um operador humano conduz os passos sugeridos pela LLM, preservando controle e auditabilidade sobre o ambiente de teste. O ciclo encerra-se quando o vetor é executado com sucesso (controle quebrado) ou ao atingir-se o limite de 3 iterações (controle resistente).
-
 ## Controles operacionais
 
 Os cinco controles avaliados, mapeados ao CISA Zero Trust Maturity Model (ZTMM), ao modelo de ameaças STRIDE e ao MITRE ATT&CK:
@@ -84,41 +78,9 @@ Os cinco controles avaliados, mapeados ao CISA Zero Trust Maturity Model (ZTMM),
 - Acesso às APIs/interfaces dos modelos de cada grupo (A, B e C)
 - Docker / Docker Compose (ambiente de laboratório)
 
-## Instalação
+## Autor 
 
-```bash
-git clone https://github.com/iacpucpr/iacsafeprompt.git
-cd iacsafeprompt
-pip install -r requirements.txt
-```
-
-## Uso
-
-> Ajuste os comandos abaixo para os scripts reais do pipeline.
-
-```bash
-# Fase 1 — geração do baseline
-python -m src.rci.fase1 --grupo A --controle all
-
-# Fase 2 — refinamento de segurança (autocrítica do Grupo A ou crítica especializada do Grupo B)
-python -m src.rci.fase2 --grupo B --max-iter 3
-
-# Fase 3 — validação ofensiva (human-in-the-loop)
-python -m src.rci.fase3 --grupo C --modo legacy
-```
-
-## Reprodutibilidade e versionamento
-
-Cada execução é versionada individualmente, em um diretório próprio no padrão `amostras<id>`, registrando:
-
-- identificador único da amostra;
-- modelo utilizado e sua versão (fixada na data de acesso, dada a volatilidade das versões);
-- parâmetros de inferência aplicados;
-- código IaC extraído da resposta;
-- valor de `S_i` atribuído a cada regra, com justificativa quando houver desempate humano;
-- IAZT por controle e IAZT global;
-- TMR calculada por controle.
-
-## Autor
-
-**Fellipe Medeiros Veiga**
+**Fellipe Medeiros Veiga** 
+- Pontifícia Universidade Católica do Paraná
+- Orientador: Altair Olivo Santin
+- Co-orientador: Eduardo Kugler Viegas
